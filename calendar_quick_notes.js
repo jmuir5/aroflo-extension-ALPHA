@@ -16,7 +16,6 @@ window.addEventListener('load', async() => {
                     cancelButtons[0].click()
                     await new Promise(r => setTimeout(r, 100));
                 }
-                document.getElementsByClassName("afBtn afBtn__fill afBtn--small af-warn schedule__delete canDisable")[0].click()
                 await new Promise(r => setTimeout(r, 100));
                 document.getElementById("btnDoneScheduleDetails").click()
                 chrome.storage.sync.set({ CancelTag: 0})
