@@ -163,15 +163,15 @@ function importData(techLocations, index23) {
         document.getElementById("surname").value = inputtag[1]
         document.getElementById("mobile").value = inputtag[4]
         document.getElementById("Email").value = inputtag[2]
-        searchPostcode2(inputtag[7])
+        //searchPostcode2(inputtag[7])
         await new Promise(r => setTimeout(r, 300));
         document.getElementById("address2").focus()
-        document.getElementById("address2").value = inputtag[5] + " " + inputtag[6]
+        document.getElementById("address2").value = inputtag[5] + " " + inputtag[7]
         document.getElementById("address2").dispatchEvent(e)
 
 
         var clicked = false
-        var postcode = inputtag[7]
+        var postcode = inputtag[8]
         var latitudeClone = null
         var longitudeClone = null
         var mapViewBtnClone = null
@@ -214,24 +214,24 @@ function importData(techLocations, index23) {
             console.log("waiting for category name")
         }
         if (inputtag[9] == "Other") {
-            document.querySelectorAll("[id='assetName']")[1].value = inputtag[8] + " " + inputtag[9]
+            document.querySelectorAll("[id='assetName']")[1].value = inputtag[9] + " " + inputtag[10]
         } else {
-            document.querySelectorAll("[id='assetName']")[1].value = inputtag[8] + " " + inputtag[9].slice(0, inputtag[9].length - 1)
+            document.querySelectorAll("[id='assetName']")[1].value = inputtag[9] + " " + inputtag[10].slice(0, inputtag[10].length - 1)
         }
-        if (inputtag[9] == "Cooktops") {
-            document.getElementById("categoryName").value = inputtag[9].slice(0, 7)
+        if (inputtag[10] == "Cooktops") {
+            document.getElementById("categoryName").value = inputtag[10].slice(0, 7)
             document.getElementById("categoryName").focus()
             await new Promise(r => setTimeout(r, 300));
             document.getElementById("categoryName").dispatchEvent(e)
 
         }
         else {
-            document.querySelectorAll("[id='btnAdvSearch']")[8].click()
+            document.querySelectorAll("[id='btnAdvSearch']")[9].click()
             while (!document.getElementById("265")) {
                 await new Promise(r => setTimeout(r, 10));
                 console.log("waiting for category name")
             }
-            document.getElementById(dict[inputtag[9]]).click()
+            document.getElementById(dict[inputtag[10]]).click()
             //console.log(document.querySelectorAll("[id='btnSelect']"))
             document.querySelectorAll("[id='btnSelect']")[1].click()
         }
@@ -245,9 +245,7 @@ function importData(techLocations, index23) {
             console.log("waiting for category close")
         }
         //set internet, sleep then set time
-        if (document.getElementById("_Cust299")) document.getElementById("_Cust299").value = "Online Booking"
-        if (document.getElementById("_Cust300")) document.getElementById("_Cust300").value = "Online Booking"
-        if (document.getElementById("_Cust301")) document.getElementById("_Cust301").value = "Online Booking"
+        document.getElementById("_Cust319").value = "Online Booking"
         //opentask in new tab
         if (document.getElementsByClassName("afBtnGroup").length > 0) {
             document.getElementById("btnDoneScheduleDetails").addEventListener("click", async () => {
@@ -263,20 +261,27 @@ function importData(techLocations, index23) {
                 if(node)node.classList.add("ui-state-highlight")
                 switch(inputtag[11]){
                     case "AM":
-                        document.getElementById("amButton").style.background='#FFFF00'
+                        for(let i=0; i<6;i++){
+                            document.getElementById("button"+i).style.background='#FFFF00'
+                        }
                         break
                     case "PM":
-                        document.getElementById("pmButton").style.background='#FFFF00'
+                        for(let i=6; i<10;i++){
+                            document.getElementById("button"+i).style.background='#FFFF00'
+                        }
                         break
                     default:
-                        document.getElementById("anyButton").style.background='#FFFF00'
+                        for(let i=0; i<10;i++){
+                            document.getElementById("button"+i).style.background='#FFFF00'
+                        }
+                        
 
                 }
                 document.getElementById("btnShowCal_1_0").click()
                 var node = document.querySelector('[title="'+inputtag[10]+'"]');
                 if(node)node.parentElement.classList.add("ui-state-highlight")
                 document.getElementsByClassName("btnAddUsers")[0].click()
-                var listOfTechs = []
+                /*var listOfTechs = []
                 for (const tech in techLocations) {
                     if (techLocations[tech].includes(postcode)) listOfTechs.push(tech)
                 }
@@ -391,75 +396,75 @@ function importData(techLocations, index23) {
                     for(i=0;i<10;i++)minusButton.click()//mapButtons[13].children[0].children[2].children[0].children[2].click()
                     
                     //end map popup code block
-                }
-                else { 
-                    console.log("no techs found") 
-                    //map popup code block
-                    var loc = document.getElementById("tblIMSMain")
-                    loc.appendChild(latitudeClone)
-                    loc.appendChild(longitudeClone)
-                    loc.appendChild(mapViewBtnClone)
-                    mapViewBtnClone.click()
-                    var mapBox = document.getElementsByClassName("ui-dialog ui-widget ui-widget-content ui-corner-all ui-draggable ui-resizable")[document.getElementsByClassName("ui-dialog ui-widget ui-widget-content ui-corner-all ui-draggable ui-resizable").length-1]
-                    mapBox.style.height = '660px'
-                    mapBox.style.width = '620px'
-                    mapBox.children[0].children[0].innerText = 'Map'
-                    mapBox.children[1].children[0].children[0].children[0].children[0].remove()
-                    var mapArea = mapBox.children[1].children[0].children[0].children[0].children[0].children[0].children[0]
-                    mapArea.style.height = '600px'
-                    mapArea.style.width = '600px'
+                }*/
+                //else { 
+                console.log("no techs found") 
+                //map popup code block
+                var loc = document.getElementById("tblIMSMain")
+                loc.appendChild(latitudeClone)
+                loc.appendChild(longitudeClone)
+                loc.appendChild(mapViewBtnClone)
+                mapViewBtnClone.click()
+                var mapBox = document.getElementsByClassName("ui-dialog ui-widget ui-widget-content ui-corner-all ui-draggable ui-resizable")[document.getElementsByClassName("ui-dialog ui-widget ui-widget-content ui-corner-all ui-draggable ui-resizable").length-1]
+                mapBox.style.height = '660px'
+                mapBox.style.width = '620px'
+                mapBox.children[0].children[0].innerText = 'Map'
+                mapBox.children[1].children[0].children[0].children[0].children[0].remove()
+                var mapArea = mapBox.children[1].children[0].children[0].children[0].children[0].children[0].children[0]
+                mapArea.style.height = '600px'
+                mapArea.style.width = '600px'
 
-                    var techTableBox = table[0].parentElement.parentElement.parentElement.parentElement.parentElement.parentElement.parentElement.parentElement.parentElement.parentElement.parentElement.parentElement
-                    var initX = techTableBox.style.left
-                    var initY = techTableBox.style.top
-                    mapBox.style.top = techTableBox.style.top
-                    techTableBox.style.left = String(parseInt(initX)-(parseInt(techTableBox.style.width)/2))+'px'
-                    mapBox.style.left = String(parseInt(initX)+(parseInt(techTableBox.style.width)/2))+'px'
-                    
-                    await new Promise(r => setTimeout(r, 100));
-                    var mapButtons = mapBox.children[1]
-                    for ( i=0; i<9; i++){
-                        while (!mapButtons.children) {
-                            await new Promise(r => setTimeout(r, 10));
-                            console.log("waiting for technician entry")
-                        }
-                        mapButtons = mapButtons.children[0]
-
-                    }
-                    //var mapButtons = mapBox.children[1].children[0].children[0].children[0].children[0].children[0].children[0].children[0].children[0].children[0].children
-                    console.log(mapButtons)
-                    while (mapButtons.length < 16) {
+                var techTableBox = table[0].parentElement.parentElement.parentElement.parentElement.parentElement.parentElement.parentElement.parentElement.parentElement.parentElement.parentElement.parentElement
+                var initX = techTableBox.style.left
+                var initY = techTableBox.style.top
+                mapBox.style.top = techTableBox.style.top
+                techTableBox.style.left = String(parseInt(initX)-(parseInt(techTableBox.style.width)/2))+'px'
+                mapBox.style.left = String(parseInt(initX)+(parseInt(techTableBox.style.width)/2))+'px'
+                
+                await new Promise(r => setTimeout(r, 100));
+                var mapButtons = mapBox.children[1]
+                for ( i=0; i<9; i++){
+                    while (!mapButtons.children) {
                         await new Promise(r => setTimeout(r, 10));
                         console.log("waiting for technician entry")
                     }
-                    document.getElementsByClassName("gm-style-iw-a")[0].remove()
-                    var minusButton = mapButtons.children[13]
-                    for ( i=0; i<4; i++){
-                        while(true){
-                            try{
-                                minusButton.children
-                                break
-                            }
-                            catch (error){
-                                console.log(error)
-                                await new Promise(r => setTimeout(r, 10));
-                                minusButton = mapButtons.children[13]
-                            }
-                        }
-                        while (!minusButton.children) {
-                            await new Promise(r => setTimeout(r, 10));
-                            console.log("waiting for technician entry")
-                        }
-                        console.log("minusButton.children")
-                        console.log(minusButton.children)
-                        minusButton = minusButton.children[(i%2)*2]
+                    mapButtons = mapButtons.children[0]
 
-                    }
-
-                    for(i=0;i<10;i++)minusButton.click()//mapButtons[13].children[0].children[2].children[0].children[2].click()
-                    
-                    //end map popup code block
                 }
+                //var mapButtons = mapBox.children[1].children[0].children[0].children[0].children[0].children[0].children[0].children[0].children[0].children[0].children
+                console.log(mapButtons)
+                while (mapButtons.length < 16) {
+                    await new Promise(r => setTimeout(r, 10));
+                    console.log("waiting for technician entry")
+                }
+                document.getElementsByClassName("gm-style-iw-a")[0].remove()
+                var minusButton = mapButtons.children[13]
+                for ( i=0; i<4; i++){
+                    while(true){
+                        try{
+                            minusButton.children
+                            break
+                        }
+                        catch (error){
+                            console.log(error)
+                            await new Promise(r => setTimeout(r, 10));
+                            minusButton = mapButtons.children[13]
+                        }
+                    }
+                    while (!minusButton.children) {
+                        await new Promise(r => setTimeout(r, 10));
+                        console.log("waiting for technician entry")
+                    }
+                    console.log("minusButton.children")
+                    console.log(minusButton.children)
+                    minusButton = minusButton.children[(i%2)*2]
+
+                }
+
+                for(i=0;i<10;i++)minusButton.click()//mapButtons[13].children[0].children[2].children[0].children[2].click()
+                
+                    //end map popup code block
+                //}
                 while (document.getElementsByClassName("schedStartTime vd_required vd_time  afTextfield__input afTextfield__input--small ui-timepicker-input").length == 0) {
                     await new Promise(r => setTimeout(r, 10));
                     console.log("waiting for technician entry")

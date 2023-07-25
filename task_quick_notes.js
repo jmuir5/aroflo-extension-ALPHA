@@ -43,8 +43,7 @@ window.addEventListener('load', async() => {
 
     custEtaButton.addEventListener("click", function(){custFunction("for part ETA, email sent to supplier/forwarded to spare parts/forwarded to technician/cust was informed of"+
         " expected delivery date")})
-    custCompButton.addEventListener("click", function(){custFunction("to complain, customer had valid problems/rambled incoherently/had their expectations adjusted/should be "+
-        "relegated to the mental asylum")})
+    custCompButton.addEventListener("click", function(){custFunction("to complain, ")})
     custReschedButton.addEventListener("click", function(){custFunction("to reschedule from XXX to XXX. Reason: XXX")})
 
     //cancellation buttons

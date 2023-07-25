@@ -39,7 +39,7 @@ window.addEventListener("load", async()=>{
                 frame[index0][0]+=1
             }*/
             frame[index0][0]+=1
-            jobs[i].parentNode.style.top = jobs[i].parentNode.offsetTop + 20+"px"
+            jobs[i].parentNode.style.top = jobs[i].parentNode.offsetTop + 35+"px"
             
             
         }
