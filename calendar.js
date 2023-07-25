@@ -94,7 +94,7 @@ window.addEventListener("load", async()=>{
                     var container=document.createElement('div')
                     var totalText = document.createElement("p")
 
-                    totalText.innerText= "Jobs:"+(frame[i][0])+"/"+dict[j][1]
+                    totalText.innerText= "Timeslots: "+(frame[i][0])+"/"+dict[j][1]
                     totalText.style.marginTop = "0px"
                     totalText.style.marginBottom = "0px"
                     if((frame[i][0])<dict[j][1])totalText.style.color ="blue"

@@ -19,14 +19,14 @@ window.addEventListener('load', async() => {
                 }
                 console.log("success time buttons")
                 const schedBlock = document.getElementsByClassName("imsMultiSchedule__settings afPageBox--contrast")[0]
-                var times = [["7:30am", "8:30am"],["8:00am", "10:00am"],["8:30am", "9:30am"],
-                            ["9:00am", "12:00pm"],["10:00am", "1:00pm"],["11:00am", "2:00pm"],
-                            ["12:00pm", "3:00pm"],["1:00pm", "4:00pm"],["2:00pm", "5:00pm"],
-                            ["3:00pm", "6:00pm"]]
+                var times = [["7:30am", "8:30am", "7:30"],["8:00am", "10:00am", "8 AM"],["8:30am", "9:30am","8:30"],
+                            ["9:00am", "12:00pm","9 AM"],["10:00am", "1:00pm","10 AM"],["11:00am", "2:00pm","11 AM"],
+                            ["12:00pm", "3:00pm","12 PM"],["1:00pm", "4:00pm","1 PM"],["2:00pm", "5:00pm","2 PM"],
+                            ["3:00pm", "6:00pm","3 PM"]]
                 var buttons = []
                 for (let i = 0; i<times.length;i++){
                     var button = document.createElement('BUTTON')
-                    var text = document.createTextNode(times[i][0])
+                    var text = document.createTextNode(times[i][2])
                     button.appendChild(text)
                     button.type="button"
                     button.id = "button"+i
