@@ -1,8 +1,5 @@
 //calendar quick info 
 window.addEventListener("load", async()=>{
-    //var dict = [["Peter Traish (8)", 4, 4, -1], ["Leo Oh (8)", 4, 4, -1], ["Sandy Adhikari", 3, 3, -1], ["Eduardo Chiovato (6)", 3, 3, -1], ["John Sleap (8)", 8, 0, -1], ["Otavio Palharini (6)", 3, 3, -1],
-      //              ["Gee Cruz (6)", 4, 2, -1], ["Leonardo Freitas (6)", 4, 2, -1], ["Tulio Pereira", 3, 3, -1], ["Ozgur Aytemur (6)", 3, 3, -1], ["Phill Poustie (6)", 3, 3, -1], 
-        //            ["Dart Carvalho (6)", 2, 2, -1], ["Matt Gillard (6)", 3, 3, -1] ]
     var jobs = []
     var columns = []
     
@@ -14,17 +11,12 @@ window.addEventListener("load", async()=>{
             //console.log("nothing to do")
         }
         var day =document.getElementsByTagName("h2")[4].childNodes[0].textContent.split(",")[0]//document.getElementsByClassName("walkme-icon-root-Launcher-39973 walkme-not-embed walkme-launcher-container walkme-launcher-container-id-39973")[0].parentElement.childNodes[0].textContent.split(",")[0]        
-        var dart = ["Dart Carvalho", 0, 0, -1]//2,2
-        var matt = ["Matt Gillard", 4, 4, -1]
         if(day == "Friday"){
-            dart = ["Dart Carvalho", 0, 0, -1]//3,3
-            matt = ["Matt Gillard", 0, 0, -1]
         }
 
         var frame = [[0,0,0,0,0],[0,0,0,0,0],[0,0,0,0,0],[0,0,0,0,0],[0,0,0,0,0],[0,0,0,0,0],[0,0,0,0,0],[0,0,0,0,0],[0,0,0,0,0],[0,0,0,0,0],[0,0,0,0,0],[0,0,0,0,0],[0,0,0,0,0],[0,0,0,0,0]]
-        var dict = [["Peter Traish", 4, 4, -1], ["Leo Oh", 4, 3, -1], ["Sandy Adhikari", 4, 4, -1], ["Eduardo Chiovato", 3, 3, -1], ["John Sleap", 8, 0, -1], 
-                    ["Otavio Palharini", 4, 4, -1], ["Gee Cruz", 4, 4, -1], ["Tulio Pereira", 4, 4, -1], ["Vini Moura", 4, 3, -1], ["Ozgur Aytemur", 4, 4, -1], ["Phill Poustie", 4, 4, -1], 
-                    dart, matt ]
+        var dict = [["David Miles", 8, 0, -1], ["Dylan Miles", 8, 0, -1], ["Tony Scalone", 8, 0, -1], ["Ron Richards", 8, 0, -1], ["Pavel Guba", 8, 0, -1], 
+                    ["Luiz Santana", 8, 0, -1], ["Mark Reardon", 8, 0, -1], ["Sam Hornsey", 8, 0, -1], ["Douglas Herbert", 8, 0, -1]]
         jobs = document.getElementsByClassName("fc-event-inner fc-event-skin")
 
         var ccol = 0
@@ -41,23 +33,16 @@ window.addEventListener("load", async()=>{
 
 
             }
-            if(jobs[i].innerText.includes("8:30a")){
-                frame[index0][0]+=1
-                
-            }
-            else if(jobs[i].innerText.includes("12:30p")){
-                frame[index0][1]+=1
-                
-            }
+            //skip over ad hoc events
+            /*if (jobs[i].childNodes[1].style.backgroundColour=rgb(255,153,0)) continue
             else{
-                frame[index0][2]+=1
-                
-            }
-            jobs[i].parentNode.style.top = jobs[i].parentNode.offsetTop + 60+"px"
+                frame[index0][0]+=1
+            }*/
+            frame[index0][0]+=1
+            jobs[i].parentNode.style.top = jobs[i].parentNode.offsetTop + 20+"px"
             
             
         }
-        //console.log(frame)
 
         var techlist = document.getElementsByClassName("fc-resourceName fc-col-res ui-widget-header")
         if (techlist.length==0) {
@@ -70,24 +55,19 @@ window.addEventListener("load", async()=>{
             var currentLowestAbs = 9999
             
             for (let j = 0; j < frame.length; j++) {
-                //console.log("tech "+i+" distance from frame "+j)
-                //console.log(Math.abs(techlist[i].offsetLeft - frame[j][4]))
                 
                 if(Math.abs(techlist[i].offsetLeft - frame[j][4])<currentLowestAbs&&Math.abs(techlist[i].offsetLeft - frame[j][4])>0){
                     currentLowestAbs = Math.abs(techlist[i].offsetLeft - frame[j][4])
                     indexAbs = i
                     if(currentLowestAbs<50){
-                        //dict[i][3]= indexAbs
                         for (let k = 0; k < dict.length; k++) {
                             if(techlist[i].title==dict[k][0]){
                                 dict[k][3] = indexAbs-offset;
-                                //console.log("i think "+techlist[i].title+" corresponds to frame "+j+" and dict entry "+k)
                                 continue breakpoint
                             }
                             
                             else if(techlist[i].childNodes[1].childNodes[1].title==dict[k][0]){
                                 dict[k][3] = indexAbs-offset;
-                                //console.log("i think "+techlist[i].childNodes[1].childNodes[1].title+" corresponds to frame "+j+" and dict entry "+k)
                                 continue breakpoint
                             }
                             
@@ -112,36 +92,13 @@ window.addEventListener("load", async()=>{
             for (let j = 0; j < dict.length; j++) {
                 if(i==dict[j][3]){
                     var container=document.createElement('div')
-                    var amText = document.createElement("p")
-                    var pmText = document.createElement("p")
-                    var anyText = document.createElement("p")
                     var totalText = document.createElement("p")
-                    
 
-                    amText.innerText = "AM: "+frame[i][0]+"/"+dict[j][1]
-                    amText.style.marginTop = "0px"
-                    amText.style.marginBottom = "0px"
-                    if(frame[i][0]<dict[j][1])amText.style.color ="blue"
-                    else if(frame[i][0]==dict[j][1])amText.style.color ="green"
-                    else amText.style.color ="red"
-                    
-                    pmText.innerText = "PM: "+frame[i][1]+"/"+dict[j][2]
-                    pmText.style.marginTop = "0px"
-                    pmText.style.marginBottom = "0px"
-                    if(frame[i][1]<dict[j][2])pmText.style.color ="blue"
-                    else if(frame[i][1]==dict[j][2])pmText.style.color ="green"
-                    else pmText.style.color ="red"
-
-                    anyText.innerText = "ANY: "+frame[i][2]
-                    anyText.style.marginTop = "0px"
-                    anyText.style.marginBottom = "0px"
-                    anyText.style.color = "#DAA520"
-
-                    totalText.innerText= "TOTAL:"+(frame[i][0]+frame[i][1]+frame[i][2])+"/"+(dict[j][1]+dict[j][2])
+                    totalText.innerText= "Booked Timeslots:"+(frame[i][0])+"/"+dict[j][1]
                     totalText.style.marginTop = "0px"
                     totalText.style.marginBottom = "0px"
-                    if((frame[i][0]+frame[i][1]+frame[i][2])<(dict[j][1]+dict[j][2]))totalText.style.color ="blue"
-                    else if((frame[i][0]+frame[i][1]+frame[i][2])==(dict[j][1]+dict[j][2]))totalText.style.color ="green"
+                    if((frame[i][0])<dict[j][1])totalText.style.color ="blue"
+                    else if((frame[i][0])==dict[j][1])totalText.style.color ="green"
                     else totalText.style.color ="red"
 
                     
@@ -151,9 +108,6 @@ window.addEventListener("load", async()=>{
 
                     container.id = "aagBox"
 
-                    container.appendChild(amText)
-                    container.appendChild(pmText)
-                    container.appendChild(anyText)
                     container.appendChild(totalText)
 
                     if(!frame[i][3]==0)bigBox.appendChild(container)
