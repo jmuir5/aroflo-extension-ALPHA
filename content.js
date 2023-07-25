@@ -5,11 +5,11 @@ window.addEventListener('load', async() => {
         //code for adding am/pm/any buttons
         var schedBlocks = document.getElementsByClassName("imsMultiSchedule__settings afPageBox--contrast")
         for (let i = 0; i<schedBlocks.length;i++){
-            if (schedBlocks[i].getElementById("button 1"))continue
+            if (schedBlocks[i].getElementsByTagName("button").length>0)continue
             else{
-                var setTime = async function(start, finish){
+                var setTime = async function(start, finish, element){
                     var techlist = []
-                    var selectedTechs = this.parentElement.parentElement.getElementsByClassName("schedResources afDataTable afDataTable--compact")[0].children[0].children
+                    var selectedTechs = element.parentElement.parentElement.getElementsByClassName("schedResources afDataTable afDataTable--compact")[0].children[0].children
                     for(let i = 0; i < selectedTechs.length; i++){
                         if(selectedTechs[i].getAttribute("deleted")==1)continue
                         techlist+= selectedTechs[i].children[1].children[0].innerText
@@ -30,7 +30,7 @@ window.addEventListener('load', async() => {
                     button.appendChild(text)
                     button.type="button"
                     button.id = "button"+i
-                    button.addEventListener("click", function(){setTime(times[i][0], times[i][1])})
+                    button.addEventListener("click", function(){setTime(times[i][0], times[i][1], this)})
                     buttons.push(button)
                 }
                 
