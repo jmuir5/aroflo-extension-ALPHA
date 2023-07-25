@@ -12,7 +12,7 @@ window.addEventListener('load', async() => {
             console.log("job number:"+ text[text.length-1])
             if(CancelTag == text[text.length-1]){
                 var cancelButtons = document.getElementsByClassName("afBtn afBtn__fill afBtn--small af-warn schedule__delete canDisable")
-                while (cancelButtons.length>0){
+                for (let i = 0; i < cancelButtons.length; i++) {
                     cancelButtons[0].click()
                     await new Promise(r => setTimeout(r, 100));
                 }
