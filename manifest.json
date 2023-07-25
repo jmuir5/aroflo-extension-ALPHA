@@ -1,0 +1,62 @@
+{
+  "name": "Enhancement Suite - MAS/PAR/SEQ",
+  "description": "speed up importing emails, send emails from client page, and other enhancements",
+  "version": "1.0883",
+  "manifest_version": 3,
+  "background": {
+    "service_worker": "background.js"
+  },
+  "permissions": ["storage", "activeTab", "scripting"],
+  "action": {
+    "default_popup": "hello.html",
+    "default_icon": {
+      "16": "icons/icon-16.png",
+      "32": "icons/icon-32.png"
+    }
+  }, 
+  "icons": {
+    "16": "icons/icon-16.png",
+    "32": "icons/icon-32.png",
+    "48": "icons/icon-48.png",
+    "128": "icons/icon-128.png"
+    },
+
+  "content_scripts": [
+    {
+      "js": ["content.js"],
+      "matches": ["https://office.aroflo.com/ims/*"]
+    },
+    {
+      "js": ["calendar.js"],
+      "matches": ["https://office.aroflo.com/ims/Site/Calendar/*"]
+    },
+    {
+      "js": ["calendar2.js"],
+      "matches": ["https://office.aroflo.com/ims/Site/Calendar/*"]
+    },
+    {
+      "js": ["calendar_quick_notes.js"],
+      "matches": ["https://office.aroflo.com/ims/Site/Calendar/*"]
+    },
+    {
+      "js": ["freezenotes.js"],
+      "matches": ["https://office.aroflo.com/ims/Site/Service/workrequest/index.cfm?viewexist=*"]
+    },
+    {
+    "js": ["invoices.js"],
+      "matches": ["https://office.aroflo.com/ims/Site/Service/invoicing/index.cfm?incoded*"]
+    },
+    {
+      "js":["task_quick_notes.js"],
+      "matches":["https://office.aroflo.com/ims/Site/Service/workrequest/index.cfm?viewexist=*"]
+    },
+    {
+      "js":["quote_quick_notes.js"],
+      "matches":["https://office.aroflo.com/ims/Site/Service/Quotes/index.cfm?viewexist=*"]
+    },
+    {
+      "js":["bulkImport.js"],
+      "matches":["https://office.aroflo.com/ims/Site/Service/workrequest/index.cfm?new=1&tid=IMS.CRT.TSK"]
+    }
+  ]
+}
