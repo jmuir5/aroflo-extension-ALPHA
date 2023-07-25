@@ -435,7 +435,8 @@ function importData(techLocations, index23) {
                 }
                 //var mapButtons = mapBox.children[1].children[0].children[0].children[0].children[0].children[0].children[0].children[0].children[0].children[0].children
                 console.log(mapButtons)
-                while (mapButtons.length < 16) {
+                //broken map 
+                /*while (mapButtons.children.length < 16) {
                     await new Promise(r => setTimeout(r, 10));
                     console.log("waiting for technician entry")
                 }
@@ -467,6 +468,7 @@ function importData(techLocations, index23) {
                 
                     //end map popup code block
                 //}
+                broken map end*/
                 while (document.getElementsByClassName("schedStartTime vd_required vd_time  afTextfield__input afTextfield__input--small ui-timepicker-input").length == 0) {
                     await new Promise(r => setTimeout(r, 10));
                     console.log("waiting for technician entry")
