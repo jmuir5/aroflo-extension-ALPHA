@@ -226,7 +226,7 @@ function importData(techLocations, index23) {
 
         }
         else {
-            document.querySelectorAll("[id='btnAdvSearch']")[9].click()
+            document.querySelectorAll("[id='btnAdvSearch']")[8].click()
             while (!document.getElementById("265")) {
                 await new Promise(r => setTimeout(r, 10));
                 console.log("waiting for category name")
@@ -398,6 +398,8 @@ function importData(techLocations, index23) {
                     //end map popup code block
                 }*/
                 //else { 
+                var tables = document.getElementsByClassName("ui-jqgrid-btable")
+                var table = tables[tables.length-1].children[0].children
                 console.log("no techs found") 
                 //map popup code block
                 var loc = document.getElementById("tblIMSMain")
