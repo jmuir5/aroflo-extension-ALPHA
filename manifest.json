@@ -1,7 +1,7 @@
 {
-  "name": "Enhancement Suite - MAS/PAR/SEQ",
+  "name": "Enhancement Suite - ALPHA",
   "description": "speed up importing emails, send emails from client page, and other enhancements",
-  "version": "1.0883",
+  "version": "1.0",
   "manifest_version": 3,
   "background": {
     "service_worker": "background.js"

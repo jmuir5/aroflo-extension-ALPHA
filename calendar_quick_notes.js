@@ -11,6 +11,11 @@ window.addEventListener('load', async() => {
             console.log("cancel tag:"+CancelTag)
             console.log("job number:"+ text[text.length-1])
             if(CancelTag == text[text.length-1]){
+                var cancelButtons = document.getElementsByClassName("afBtn afBtn__fill afBtn--small af-warn schedule__delete canDisable")
+                while (cancelButtons.length>0){
+                    cancelButtons[0].click()
+                    await new Promise(r => setTimeout(r, 100));
+                }
                 document.getElementsByClassName("afBtn afBtn__fill afBtn--small af-warn schedule__delete canDisable")[0].click()
                 await new Promise(r => setTimeout(r, 100));
                 document.getElementById("btnDoneScheduleDetails").click()
