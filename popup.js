@@ -145,7 +145,7 @@ function importData(techLocations, index23) {
             console.log("you are on the create page")
         }
         var ownerFlag = 0
-        if (document.getElementById("ownerOrgName"))ownerFlag=1
+        if (!document.getElementById("ownerOrgName"))ownerFlag=1
         inputtag[0] = inputtag[0].toLowerCase().trim()
         inputtag[0] = inputtag[0].charAt(0).toUpperCase() + inputtag[0].slice(1);
         inputtag[1] = inputtag[1].toLowerCase().trim()
