@@ -61,11 +61,11 @@ function sleep(ms) {
 importBtn.addEventListener("click", async () => {
     let inputtag0 = document.querySelector("#textArea").value.split("\n");
     var inputtag =[]
-    for(i=0; i<inputtag0.length;i++){
+    for(let i=0; i<inputtag0.length;i++){
         inputtag.push(inputtag0[i].split("\t")[1])
     }
     console.log(inputtag)
-    return
+    
 
     //phone number validation
     if (inputtag[3].startsWith("+61")) {
@@ -87,9 +87,9 @@ importBtn.addEventListener("click", async () => {
         console.log(inputtag[3])
         return
     }
-    if (/\d/.test(inputtag[4])) {
+    if (!/\d/.test(inputtag[4])) {
         document.querySelector("#textArea").value = "something is wrong with the address: No street Number"
-        console.log(inputtag[3])
+        console.log(inputtag[4])
         return
     }
     chrome.storage.sync.set({ inputtag: inputtag });
@@ -151,7 +151,7 @@ function importData(techLocations, index23) {
         //set description
         document.getElementById("tdDefault").click()
         var description = ""
-        for (let i = 12; i < inputtag.length; i++) {
+        for (let i = 11; i < inputtag.length; i++) {
             description += "\<p\>" + inputtag[i] + "\<\/p\>"
         }
         console.log(description)
@@ -247,10 +247,10 @@ function importData(techLocations, index23) {
             document.querySelectorAll("[id='btnSelect']")[1].click()
         }
         while (document.getElementById("categoryName")) {
-            if (inputtag[7] != "Cooktops") {
+            /*if (inputtag[7] != "Cooktops") {
                 document.getElementsByClassName("afBtn--small afBtn__fill af-success")[0].click()
                 break
-            }
+            }*/
             await new Promise(r => setTimeout(r, 10));
 
             console.log("waiting for category close")
