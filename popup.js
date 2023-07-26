@@ -144,6 +144,8 @@ function importData(techLocations, index23) {
         if (!document.getElementById("boxUseCalendarViews")) {
             console.log("you are on the create page")
         }
+        var ownerFlag = 0
+        if (document.getElementById("ownerOrgName"))ownerFlag=1
         inputtag[0] = inputtag[0].toLowerCase().trim()
         inputtag[0] = inputtag[0].charAt(0).toUpperCase() + inputtag[0].slice(1);
         inputtag[1] = inputtag[1].toLowerCase().trim()
@@ -161,7 +163,7 @@ function importData(techLocations, index23) {
         document.getElementById("tdRich").checked = true
 
         //open client, set client, wait
-        document.querySelectorAll("[id='btnAdvSearch']")[1].click()
+        document.querySelectorAll("[id='btnAdvSearch']")[1-ownerFlag].click()
         document.getElementById("btnAdd").click()
         while (!document.getElementById("Name")) {
             await new Promise(r => setTimeout(r, 10));
@@ -217,7 +219,7 @@ function importData(techLocations, index23) {
             }
         }
         //open asset, set asset
-        document.querySelectorAll("[id='btnAdvSearch']")[3].click()
+        document.querySelectorAll("[id='btnAdvSearch']")[3-ownerFlag].click()
         document.getElementById("btnAdd").click()
         console.log("creating asset")
         while (!document.getElementById("categoryName")) {
@@ -237,7 +239,7 @@ function importData(techLocations, index23) {
 
         }
         else {
-            document.querySelectorAll("[id='btnAdvSearch']")[8].click()
+            document.querySelectorAll("[id='btnAdvSearch']")[8-ownerFlag].click()
             while (!document.getElementById("265")) {
                 await new Promise(r => setTimeout(r, 10));
                 console.log("waiting for category name")
