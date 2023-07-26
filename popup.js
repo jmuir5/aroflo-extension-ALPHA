@@ -246,6 +246,7 @@ function importData(techLocations, index23) {
         }
         //set internet, sleep then set time
         document.getElementById("_Cust319").value = "Online Booking"
+        document.getElementById("_Cust147").value = "Eftpos"
         //opentask in new tab
         if (document.getElementsByClassName("afBtnGroup").length > 0) {
             document.getElementById("btnDoneScheduleDetails").addEventListener("click", async () => {
@@ -430,13 +431,15 @@ function importData(techLocations, index23) {
                         await new Promise(r => setTimeout(r, 10));
                         console.log("waiting for technician entry")
                     }
+                    if(i==8) await new Promise(r => setTimeout(r, 100));
                     mapButtons = mapButtons.children[0]
 
                 }
+                
                 //var mapButtons = mapBox.children[1].children[0].children[0].children[0].children[0].children[0].children[0].children[0].children[0].children[0].children
                 console.log(mapButtons)
                 //broken map 
-                /*while (mapButtons.children.length < 16) {
+                while (mapButtons.children.length < 16) {
                     await new Promise(r => setTimeout(r, 10));
                     console.log("waiting for technician entry")
                 }
@@ -468,7 +471,7 @@ function importData(techLocations, index23) {
                 
                     //end map popup code block
                 //}
-                broken map end*/
+                //broken map end
                 while (document.getElementsByClassName("schedStartTime vd_required vd_time  afTextfield__input afTextfield__input--small ui-timepicker-input").length == 0) {
                     await new Promise(r => setTimeout(r, 10));
                     console.log("waiting for technician entry")
@@ -482,7 +485,7 @@ function importData(techLocations, index23) {
             while (document.getElementById("btnSelect")) {
                 await new Promise(r => setTimeout(r, 10));
             }
-            schedLoop:
+            /*schedLoop:
             while (true) {
                 while (document.getElementsByClassName("schedStartTime vd_required vd_time  afTextfield__input afTextfield__input--small ui-timepicker-input").length == 0 || !document.getElementsByClassName("schedNote afTextfield__input afTextfield__input--small vd_length")[0].value == "") {
                     await new Promise(r => setTimeout(r, 10));
@@ -498,10 +501,10 @@ function importData(techLocations, index23) {
                             document.getElementById("pmButton").click()
                             break
                         default:
-                            document.getElementById("anyButton").click()
+                            //document.getElementById("anyButton").click()
                     }
                 }
-            }
+            }*/
         }
     });
 }
