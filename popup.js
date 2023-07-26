@@ -59,26 +59,37 @@ function sleep(ms) {
 }
 
 importBtn.addEventListener("click", async () => {
-    let inputtag = document.querySelector("#textArea").value.split("\n");
+    let inputtag0 = document.querySelector("#textArea").value.split("\n");
+    var inputtag =[]
+    for(i=0; i<inputtag0.length;i++){
+        inputtag.push(inputtag0[i].split("\t")[1])
+    }
+    console.log(inputtag)
+    return
 
     //phone number validation
-    if (inputtag[4].startsWith("+61")) {
-        inputtag[4] = inputtag[4].replace('+61', '0');
+    if (inputtag[3].startsWith("+61")) {
+        inputtag[3] = inputtag[3].replace('+61', '0');
     }
-    if (inputtag[4].startsWith("61")) {
-        inputtag[4] = inputtag[4].replace('61', '0');
+    if (inputtag[3].startsWith("61")) {
+        inputtag[3] = inputtag[3].replace('61', '0');
     }
-    while (inputtag[4].includes(" ")) {
-        inputtag[4] = inputtag[4].replace(' ', '');
+    while (inputtag[3].includes(" ")) {
+        inputtag[3] = inputtag[3].replace(' ', '');
     }
-    if (!/^[0-9]+$/.test(inputtag[4])) {
+    if (!/^[0-9]+$/.test(inputtag[3])) {
         document.querySelector("#textArea").value = "something is wrong with the phone number: Not a Number"
-        console.log(inputtag[4])
+        console.log(inputtag[3])
         return
     }
-    if (inputtag[4].length != 10) {
+    if (inputtag[3].length != 10) {
         document.querySelector("#textArea").value = "something is wrong with the phone number: wrong length"
-        console.log(inputtag[4])
+        console.log(inputtag[3])
+        return
+    }
+    if (/\d/.test(inputtag[4])) {
+        document.querySelector("#textArea").value = "something is wrong with the address: No street Number"
+        console.log(inputtag[3])
         return
     }
     chrome.storage.sync.set({ inputtag: inputtag });
@@ -161,17 +172,17 @@ function importData(techLocations, index23) {
         document.getElementById("ShortName").value = inputtag[1].slice(0, 6)
         document.getElementById("givennames").value = inputtag[0]
         document.getElementById("surname").value = inputtag[1]
-        document.getElementById("mobile").value = inputtag[4]
+        document.getElementById("mobile").value = inputtag[3]
         document.getElementById("Email").value = inputtag[2]
-        //searchPostcode2(inputtag[7])
+        //searchPostcode2(inputtag[5])
         await new Promise(r => setTimeout(r, 300));
         document.getElementById("address2").focus()
-        document.getElementById("address2").value = inputtag[5] + " " + inputtag[7]
+        document.getElementById("address2").value = inputtag[4] + " " + inputtag[5]
         document.getElementById("address2").dispatchEvent(e)
 
 
         var clicked = false
-        var postcode = inputtag[8]
+        var postcode = inputtag[6]
         var latitudeClone = null
         var longitudeClone = null
         var mapViewBtnClone = null
@@ -213,13 +224,13 @@ function importData(techLocations, index23) {
             await new Promise(r => setTimeout(r, 10));
             console.log("waiting for category name")
         }
-        if (inputtag[9] == "Other") {
-            document.querySelectorAll("[id='assetName']")[1].value = inputtag[9] + " " + inputtag[10]
+        if (inputtag[7] == "Other") {
+            document.querySelectorAll("[id='assetName']")[1].value = inputtag[7] + " " + inputtag[8]
         } else {
-            document.querySelectorAll("[id='assetName']")[1].value = inputtag[9] + " " + inputtag[10].slice(0, inputtag[10].length - 1)
+            document.querySelectorAll("[id='assetName']")[1].value = inputtag[7] + " " + inputtag[8].slice(0, inputtag[8].length - 1)
         }
-        if (inputtag[10] == "Cooktops") {
-            document.getElementById("categoryName").value = inputtag[10].slice(0, 7)
+        if (inputtag[8] == "Cooktops") {
+            document.getElementById("categoryName").value = inputtag[8].slice(0, 7)
             document.getElementById("categoryName").focus()
             await new Promise(r => setTimeout(r, 300));
             document.getElementById("categoryName").dispatchEvent(e)
@@ -231,12 +242,12 @@ function importData(techLocations, index23) {
                 await new Promise(r => setTimeout(r, 10));
                 console.log("waiting for category name")
             }
-            document.getElementById(dict[inputtag[10]]).click()
+            document.getElementById(dict[inputtag[8]]).click()
             //console.log(document.querySelectorAll("[id='btnSelect']"))
             document.querySelectorAll("[id='btnSelect']")[1].click()
         }
         while (document.getElementById("categoryName")) {
-            if (inputtag[9] != "Cooktops") {
+            if (inputtag[7] != "Cooktops") {
                 document.getElementsByClassName("afBtn--small afBtn__fill af-success")[0].click()
                 break
             }
@@ -258,7 +269,7 @@ function importData(techLocations, index23) {
         }
         else {
             if (!document.getElementById("boxUseCalendarViews")) {
-                switch(inputtag[12]){
+                switch(inputtag[10]){
                     case "AM":
                         for(let i=0; i<6;i++){
                             document.getElementById("button"+i).style.background='#FFFF00'
@@ -277,7 +288,7 @@ function importData(techLocations, index23) {
 
                 }
                 document.getElementById("btnShowCal_1_0").click()
-                var node = document.querySelector('[title="'+inputtag[11]+'"]');
+                var node = document.querySelector('[title="'+inputtag[9]+'"]');
                 if(node){
                     node.parentElement.classList.add("ui-state-highlight")
                     node.parentElement.style.background='#FFFF00'
@@ -496,7 +507,7 @@ function importData(techLocations, index23) {
                     if (document.getElementsByClassName("afBtn afBtn__fill af-primary fc-button-today ui") && !document.getElementById("ui-dialog-title-dlgSchedDetails")) return
                 }
                 if (document.getElementsByClassName("schedNote afTextfield__input afTextfield__input--small vd_length")[0].value == "") {
-                    switch (inputtag[11]) {
+                    switch (inputtag[9]) {
                         case "AM":
                             document.getElementById("amButton").click()
                             break
