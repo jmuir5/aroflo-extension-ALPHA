@@ -258,9 +258,9 @@ function importData(techLocations, index23) {
         }
         else {
             if (!document.getElementById("boxUseCalendarViews")) {
-                var node = document.querySelector('[title="'+inputtag[10]+'"]');
+                var node = document.querySelector('[title="'+inputtag[11]+'"]');
                 if(node)node.classList.add("ui-state-highlight")
-                switch(inputtag[11]){
+                switch(inputtag[12]){
                     case "AM":
                         for(let i=0; i<6;i++){
                             document.getElementById("button"+i).style.background='#FFFF00'
@@ -279,8 +279,8 @@ function importData(techLocations, index23) {
 
                 }
                 document.getElementById("btnShowCal_1_0").click()
-                var node = document.querySelector('[title="'+inputtag[10]+'"]');
-                if(node)node.parentElement.classList.add("ui-state-highlight")
+                //var node = document.querySelector('[title="'+inputtag[11]+'"]');
+                //if(node)node.parentElement.classList.add("ui-state-highlight")
                 document.getElementsByClassName("btnAddUsers")[0].click()
                 /*var listOfTechs = []
                 for (const tech in techLocations) {
