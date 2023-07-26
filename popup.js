@@ -258,8 +258,6 @@ function importData(techLocations, index23) {
         }
         else {
             if (!document.getElementById("boxUseCalendarViews")) {
-                var node = document.querySelector('[title="'+inputtag[11]+'"]');
-                if(node)node.classList.add("ui-state-highlight")
                 switch(inputtag[12]){
                     case "AM":
                         for(let i=0; i<6;i++){
@@ -279,14 +277,13 @@ function importData(techLocations, index23) {
 
                 }
                 document.getElementById("btnShowCal_1_0").click()
-                //var node = document.querySelector('[title="'+inputtag[11]+'"]');
-                //if(node)node.parentElement.classList.add("ui-state-highlight")
-                document.getElementsByClassName("btnAddUsers")[0].click()
-                /*var listOfTechs = []
-                for (const tech in techLocations) {
-                    if (techLocations[tech].includes(postcode)) listOfTechs.push(tech)
+                var node = document.querySelector('[title="'+inputtag[11]+'"]');
+                if(node){
+                    node.parentElement.classList.add("ui-state-highlight")
+                    node.parentElement.style.background='#FFFF00'
                 }
-                console.log(listOfTechs)
+                document.getElementsByClassName("btnAddUsers")[0].click()
+                
                 if (document.getElementsByClassName("afCard").length == 5) {
                     //console.log(document.getElementsByClassName("afCard")[4].childNodes[1].textContent)
                     while (document.getElementsByClassName("afCard").length>4) {
@@ -300,6 +297,12 @@ function importData(techLocations, index23) {
                     console.log(document.getElementsByClassName("afCard")[4].childNodes[1].textContent)
                     
                 }
+                /*var listOfTechs = []
+                for (const tech in techLocations) {
+                    if (techLocations[tech].includes(postcode)) listOfTechs.push(tech)
+                }
+                console.log(listOfTechs)
+                
                 var tables = document.getElementsByClassName("ui-jqgrid-btable")
 
                 while (tables[tables.length-1].children[0].children.length <= 1) {
