@@ -61,10 +61,10 @@ function sleep(ms) {
 importBtn.addEventListener("click", async () => {
     let inputtag0 = document.querySelector("#textArea").value.split("\n");
     var inputtag =[]
-    for(let i=0; i<11;i++){
+    for(let i=0; i<12;i++){
         inputtag.push(inputtag0[i].split("\t")[1])
     }
-    for(let i=11; i<inputtag.length;i++){
+    for(let i=12; i<inputtag0.length;i++){
         inputtag.push(inputtag0[i])
     }
     console.log(inputtag)
