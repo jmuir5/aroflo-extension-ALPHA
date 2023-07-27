@@ -8,3 +8,6 @@
 
 1.0001
 -added changelog
+
+1.0002
+- fixed multiline description and null in description errors
