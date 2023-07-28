@@ -11,3 +11,7 @@
 
 1.0002
 - fixed multiline description and null in description errors
+
+1.0003
+- fixed time buttons bug
+- fixed calendar display bug

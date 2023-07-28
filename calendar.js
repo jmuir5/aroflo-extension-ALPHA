@@ -16,7 +16,8 @@ window.addEventListener("load", async()=>{
 
         var frame = [[0,0,0,0,0],[0,0,0,0,0],[0,0,0,0,0],[0,0,0,0,0],[0,0,0,0,0],[0,0,0,0,0],[0,0,0,0,0],[0,0,0,0,0],[0,0,0,0,0],[0,0,0,0,0],[0,0,0,0,0],[0,0,0,0,0],[0,0,0,0,0],[0,0,0,0,0]]
         var dict = [["David Miles", 8, 0, -1], ["Dylan Miles", 8, 0, -1], ["Tony Scalone", 8, 0, -1], ["Ron Richards", 8, 0, -1], ["Pavel Guba", 8, 0, -1], 
-                    ["Luiz Santana", 8, 0, -1], ["Mark Reardon", 8, 0, -1], ["Sam Hornsey", 8, 0, -1], ["Douglas Herbert", 8, 0, -1]]
+                    ["Luiz Santana", 8, 0, -1], ["Mark Reardon", 8, 0, -1], ["Sam Hornsey", 8, 0, -1], ["Douglas Herbert", 8, 0, -1], 
+                    ["Shane Van Der Hoek", 0, 0, -1], ["Darryl Diamond", 0, 0, -1],["James Campbell", 0, 0, -1]]
         jobs = document.getElementsByClassName("fc-event-inner fc-event-skin")
 
         var ccol = 0
