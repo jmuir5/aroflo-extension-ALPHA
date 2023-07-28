@@ -36,8 +36,8 @@ window.addEventListener('load', async() => {
     
                 
                 schedBlocks[i].appendChild(document.createElement('BR'))
-                for (let i = 0; i<buttons.length;i++){
-                    schedBlock.appendChild(buttons[i])
+                for (let j = 0; j<buttons.length; j++){
+                    schedBlocks[i].appendChild(buttons[j])
                 }
                 
             

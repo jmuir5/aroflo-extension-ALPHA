@@ -15,3 +15,6 @@
 1.0003
 - fixed time buttons bug
 - fixed calendar display bug
+
+1.0004
+time buttons fix pt 2
