@@ -16,8 +16,11 @@ window.addEventListener('load', async() => {
                     cancelButtons[0].click()
                     await new Promise(r => setTimeout(r, 100));
                 }
-                await new Promise(r => setTimeout(r, 100));
                 document.getElementById("btnDoneScheduleDetails").click()
+                while(document.getElementsByClassName("ui-dialog ui-widget ui-widget-content ui-corner-all ui-draggable ui-resizable").length>0){
+                    await new Promise(r => setTimeout(r, 10));
+                    console.log("waiting for job sheet close")
+                }
                 chrome.storage.sync.set({ CancelTag: 0})
                 window.close();
             }
