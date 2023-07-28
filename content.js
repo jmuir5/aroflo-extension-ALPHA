@@ -18,7 +18,6 @@ window.addEventListener('load', async() => {
                     }
                 }
                 console.log("success time buttons")
-                const schedBlock = document.getElementsByClassName("imsMultiSchedule__settings afPageBox--contrast")[0]
                 var times = [["7:30am", "8:30am", "7:30"],["8:00am", "10:00am", "8 AM"],["8:30am", "9:30am","8:30"],
                             ["9:00am", "12:00pm","9 AM"],["10:00am", "1:00pm","10 AM"],["11:00am", "2:00pm","11 AM"],
                             ["12:00pm", "3:00pm","12 PM"],["1:00pm", "4:00pm","1 PM"],["2:00pm", "5:00pm","2 PM"],
@@ -36,7 +35,7 @@ window.addEventListener('load', async() => {
                 
     
                 
-                schedBlock.appendChild(document.createElement('BR'))
+                schedBlocks[i].appendChild(document.createElement('BR'))
                 for (let i = 0; i<buttons.length;i++){
                     schedBlock.appendChild(buttons[i])
                 }
