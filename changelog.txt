@@ -18,3 +18,9 @@
 
 1.0004
 time buttons fix pt 2
+
+1.0005 
+???
+
+1.0006
+- added quick email/text
