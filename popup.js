@@ -64,7 +64,8 @@ importBtn.addEventListener("click", async () => {
     let inputtag0 = document.querySelector("#textArea").value.split("\n");
     var inputtag =[]
     for(let i=0; i<12;i++){
-        inputtag.push(inputtag0[i].split("\t")[1])
+        if (i==3&& inputtag0[i].length==0)continue
+        else inputtag.push(inputtag0[i].split("\t")[1])
     }
     for(let i=12; i<inputtag0.length;i++){
         inputtag.push(inputtag0[i])
@@ -170,6 +171,7 @@ function importData(techLocations, index23) {
         //open client, set client, wait
         document.querySelectorAll("[id='btnAdvSearch']")[1-ownerFlag].click()
         document.getElementById("btnAdd").click()
+        
         while (!document.getElementById("Name")) {
             await new Promise(r => setTimeout(r, 10));
             console.log("waiting for name")
@@ -254,10 +256,10 @@ function importData(techLocations, index23) {
             document.querySelectorAll("[id='btnSelect']")[1].click()
         }
         while (document.getElementById("categoryName")) {
-            /*if (inputtag[7] != "Cooktops") {
+            if (inputtag[8] != "Cooktops") {
                 document.getElementsByClassName("afBtn--small afBtn__fill af-success")[0].click()
                 break
-            }*/
+            }
             await new Promise(r => setTimeout(r, 10));
 
             console.log("waiting for category close")
@@ -265,6 +267,9 @@ function importData(techLocations, index23) {
         //set internet, sleep then set time
         document.getElementById("_Cust319").value = "Online Booking"
         document.getElementById("_Cust147").value = "Eftpos"
+
+        
+
         //opentask in new tab
         if (document.getElementsByClassName("afBtnGroup").length > 0) {
             document.getElementById("btnDoneScheduleDetails").addEventListener("click", async () => {
@@ -506,6 +511,13 @@ function importData(techLocations, index23) {
             while (document.getElementById("btnSelect")) {
                 await new Promise(r => setTimeout(r, 10));
             }
+            document.querySelectorAll("[id='btnAdvSearch']")[5-ownerFlag].click()
+            while (document.getElementsByClassName("afDataTable__row jqgrow ui-row-ltr").length<1) {
+                await new Promise(r => setTimeout(r, 10));
+                console.log("waiting for name")
+            }
+            document.getElementsByClassName("afDataTable__row jqgrow ui-row-ltr")[0].click()
+            document.getElementById("btnSelect").click()
             /*schedLoop:
             while (true) {
                 while (document.getElementsByClassName("schedStartTime vd_required vd_time  afTextfield__input afTextfield__input--small ui-timepicker-input").length == 0 || !document.getElementsByClassName("schedNote afTextfield__input afTextfield__input--small vd_length")[0].value == "") {
@@ -732,12 +744,14 @@ async function ContactClient(flag) {
                 console.log("waiting for load")
             }
             await new Promise(r => setTimeout(r, 500));
-            document.getElementById("FromEmail").value = 'Bookings Team <'+bookingsInbox+'>'
-            document.getElementById("FailToEmail").value = 'Bookings Team <'+bookingsInbox+'>'
-            if(document.getElementById("RequestReadRecipts").checked)document.getElementById("RequestReadRecipts").click()
-            if(!document.getElementById("allowReplyImports").checked)document.getElementById("RequestReadRecipts").click()
             if(document.getElementById("TrackEmailYesNo").checked)document.getElementById("TrackEmailYesNo").click()
-            if(document.getElementById("TrackDeliveryStatus").checked)document.getElementById("TrackDeliveryStatus").click()
+            if(document.getElementById("RequestReadReceipt").checked)document.getElementById("RequestReadReceipt").click()
+            if(!document.getElementById("allowReplyImports").checked)document.getElementById("allowReplyImports").click()
+            if(document.getElementById("trackDeliveryStatus").checked)document.getElementById("trackDeliveryStatus").click()
+            await new Promise(r => setTimeout(r, 10));
+            //document.getElementById("FromEmail").value = 'Bookings Team <'+bookingsInbox+'>'
+            //document.getElementById("forwardRepliesTo").value = 'Bookings Team <'+bookingsInbox+'>'
+            //document.getElementById("FailToEmail").value = 'Bookings Team <'+bookingsInbox+'>'
             document.getElementById("sendEmail_button").click()
             console.log("done2")
             while (!document.getElementsByClassName("emlSendResult")[0]) {
@@ -929,7 +943,7 @@ function sendEmail() {
 
 }
 
-
+/*
 smsBtn1.addEventListener("click", async () => {
     var smsTag = 0
     chrome.storage.sync.set({ smsTag: smsTag });
@@ -1073,7 +1087,7 @@ function sendTexts() {
 
     });
 }
-
+*/
 //approve invoices 
 invoiceBtn.addEventListener("click", async () => {
     console.log("ping");
@@ -1178,7 +1192,7 @@ buyPriceBox.addEventListener("change", async () => {
 
 })
 
-
+/*
 var searchPostcode = async function (postcode) {
     while (techBox.childNodes.length > 0) { techBox.childNodes[0].remove() }
     var listOfTechs = []
@@ -1300,7 +1314,7 @@ bulkImportBtn.addEventListener("click", async () => {
     }
 
 });
-
+*/
 resetFlagsBtn.addEventListener("click", async () => {
     chrome.storage.sync.set({ bulkTag: -1 });
     chrome.storage.sync.set({ createTag: 0 });

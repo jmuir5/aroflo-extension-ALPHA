@@ -24,3 +24,7 @@ time buttons fix pt 2
 
 1.0006
 - added quick email/text
+- updated import to set "reported by"
+- reactivated field price calculator
+- reactivated quick invoices
+- reactivated reset flags button from bulk import
