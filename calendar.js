@@ -89,6 +89,7 @@ window.addEventListener("load", async()=>{
         
         
         var bigBox = jobs[0].parentNode.parentNode
+        var totalJobs = 0
         for (let i = 0; i < techlist.length/2; i++) {
             for (let j = 0; j < dict.length; j++) {
                 if(i==dict[j][3]){
@@ -96,6 +97,7 @@ window.addEventListener("load", async()=>{
                     var totalText = document.createElement("p")
 
                     totalText.innerText= "Timeslots: "+(frame[i][0])+"/"+dict[j][1]
+                    totalJobs += frame[i][0]
                     totalText.style.marginTop = "0px"
                     totalText.style.marginBottom = "0px"
                     if((frame[i][0])<dict[j][1])totalText.style.color ="blue"
@@ -118,11 +120,13 @@ window.addEventListener("load", async()=>{
                     break
                 }
             }
+            
 
 
             //techlist[i+techlist.length/2].childNodes[1].childNodes[3].innerText = "testing\ntesting\ntesting\ntesting\n"
             //techlist[i+techlist.length/2].setAttribute("height", 100)
         }
+        document.getElementsByTagName("h2")[4].childNodes[0].textContent+=", Total: "+totalJobs.toString()
         //console.log("finished")
 
         
