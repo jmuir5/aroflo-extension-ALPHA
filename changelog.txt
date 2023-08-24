@@ -31,3 +31,6 @@ time buttons fix pt 2
 
 1.0007
 - added calendar TOTAL jobs text
+
+1.0008
+- fixed calendar total jobs text bug

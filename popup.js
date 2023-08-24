@@ -752,7 +752,7 @@ async function ContactClient(flag) {
             //document.getElementById("FromEmail").value = 'Bookings Team <'+bookingsInbox+'>'
             //document.getElementById("forwardRepliesTo").value = 'Bookings Team <'+bookingsInbox+'>'
             //document.getElementById("FailToEmail").value = 'Bookings Team <'+bookingsInbox+'>'
-            document.getElementById("sendEmail_button").click()
+            //document.getElementById("sendEmail_button").click()
             console.log("done2")
             while (!document.getElementsByClassName("emlSendResult")[0]) {
                 await new Promise(r => setTimeout(r, 10));

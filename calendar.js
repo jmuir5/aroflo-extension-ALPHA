@@ -2,6 +2,11 @@
 window.addEventListener("load", async()=>{
     var jobs = []
     var columns = []
+
+    var currentDay = ""
+    var baseDayString = ""
+    var currentTotal = 0
+    
     
     
     while(true){
@@ -121,13 +126,17 @@ window.addEventListener("load", async()=>{
                 }
             }
             
-
-
-            //techlist[i+techlist.length/2].childNodes[1].childNodes[3].innerText = "testing\ntesting\ntesting\ntesting\n"
-            //techlist[i+techlist.length/2].setAttribute("height", 100)
         }
-        document.getElementsByTagName("h2")[4].childNodes[0].textContent+=", Total: "+totalJobs.toString()
-        //console.log("finished")
+        
+        if(day!=currentDay){
+            currentDay = day
+            baseDayString = document.getElementsByTagName("h2")[4].childNodes[0].textContent
+            currentTotal = 0
+        } 
+        if (currentTotal!= totalJobs){
+            document.getElementsByTagName("h2")[4].childNodes[0].textContent =baseDayString+", Total: "+totalJobs.toString()
+            currentTotal = totalJobs
+        }
 
         
         
